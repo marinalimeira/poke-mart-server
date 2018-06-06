@@ -1,0 +1,33 @@
+type Item {
+  name: String!
+  price: Float!
+  quantity: Int
+}
+
+type TrainerItems {
+  items: [Item]
+}
+
+type QueryRoot {
+  items: [Item]
+  trainerItems: TrainerItems
+}
+
+type BuyItemPayload {
+  success: Boolean!
+}
+
+input BuyItemInput {
+  name: String!
+  quantity: Int!
+}
+
+type MutationRoot {
+  buyItem(input: BuyItemInput): BuyItemPayload
+}
+
+schema {
+  query: QueryRoot
+  mutation: MutationRoot
+}
+
