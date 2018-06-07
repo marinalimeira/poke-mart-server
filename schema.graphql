@@ -4,14 +4,10 @@ type Item {
   quantity: Int
 }
 
-type TrainerItems {
+type Storage {
   items: [Item]
 }
 
-type QueryRoot {
-  items: [Item]
-  trainerItems: TrainerItems
-}
 
 type BuyItemPayload {
   success: Boolean!
@@ -20,6 +16,11 @@ type BuyItemPayload {
 input BuyItemInput {
   name: String!
   quantity: Int!
+}
+
+type QueryRoot {
+  items: [Item]
+  storage: Storage
 }
 
 type MutationRoot {

@@ -19,14 +19,13 @@ const buyItems = (items) => {
   return {};
 };
 
-
 const schema = makeExecutableSchema({ typeDefs: pokeMartSchema });
 
 const mocks = {
   BuyItemPayload: (obj, args) => buyItems(args.input),
   QueryRoot: (obj, args, context, info) => ({
     items: () => Items,
-    trainerItems: () => storage,
+    storage: () => { items: storage },
   }),
 };
 

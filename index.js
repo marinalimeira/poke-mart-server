@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import { graphiqlExpress, graphqlExpress } from 'apollo-server-express';
 import schema from './schema';
@@ -6,6 +7,6 @@ import { formatGraphQLErrorResponse } from './error';
 
 const app = express();
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: schema, formatError: formatGraphQLErrorResponse }));
+app.use('/graphql', cors(), bodyParser.json(), graphqlExpress({ schema }));
 
-app.listen(3000);
+app.listen(3030);
